@@ -1,35 +1,32 @@
 class Result {
-  int _vote_count;
-  int _id;
-  bool _video;
-  var _vote_average;
-  String _title;
   double _popularity;
+  int _vote_count;
+  bool _video;
   String _poster_path;
+  int _id;
+  bool _adult;
+  String _backdrop_path;
   String _original_language;
   String _original_title;
   List<int> _genre_ids = [];
-  String _backdrop_path;
-  bool _adult;
+  String _title;
+  double _vote_average;
   String _overview;
   String _release_date;
 
-  _Result(result) {
-    _vote_count = result['vote_count'];
-    _id = result['id'];
-    _video = result['video'];
-    _vote_average = result['vote_average'];
-    _title = result['title'];
-    _popularity = result['popularity'];
-    _poster_path = result['poster_path'];
-    _original_language = result['original_language'];
-    _original_title = result['original_title'];
-    for (int i = 0; i < result['genre_ids'].length; i++) {
-      _genre_ids.add(result['genre_ids'][i]);
-    }
-    _backdrop_path = result['backdrop_path'];
-    _adult = result['adult'];
-    _overview = result['overview'];
-    _release_date = result['release_date'];
-  }
+  Result(
+      this._popularity,
+      this._vote_count,
+      this._video,
+      this._poster_path,
+      this._id,
+      this._adult,
+      this._backdrop_path,
+      this._original_language,
+      this._original_title,
+      this._genre_ids,
+      this._title,
+      this._vote_average,
+      this._overview,
+      this._release_date);
 }
