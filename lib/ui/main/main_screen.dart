@@ -1,13 +1,17 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_proyect/ui/popular/popular_screen.dart';
+import 'package:movies_proyect/ui/topRated/top_rated_screen.dart';
+import 'package:movies_proyect/ui/upcoming/upcoming_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class MainScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MainScreenState extends State<MainScreen> {
+  List<Widget> screens = [PopularScreen(), UpcomingScreen(), TopRatedScreen()];
   int _selectedIndex = 0;
   PageController _pageController;
 
@@ -26,29 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('primera pantalla'),
-        ),
         body: SizedBox.expand(
           child: PageView(
             controller: _pageController,
             onPageChanged: (index) {
               setState(() => _selectedIndex = index);
             },
-            children: <Widget>[
-              Container(
-                color: Colors.blueGrey,
-              ),
-              Container(
-                color: Colors.red,
-              ),
-              Container(
-                color: Colors.green,
-              ),
-              Container(
-                color: Colors.blue,
-              ),
-            ],
+            children: screens,
           ),
         ),
         bottomNavigationBar: BottomNavyBar(
@@ -62,23 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 }),
             items: [
               BottomNavyBarItem(
-                icon: Icon(Icons.apps),
-                title: Text('Home'),
+                icon: Icon(Icons.local_play),
+                title: Text('Popular'),
                 activeColor: Colors.red,
               ),
               BottomNavyBarItem(
-                  icon: Icon(Icons.people),
-                  title: Text('Users'),
+                  icon: Icon(Icons.alarm),
+                  title: Text('Upcoming'),
                   activeColor: Colors.purpleAccent),
               BottomNavyBarItem(
-                  icon: Icon(Icons.message),
-                  title: Text('Messages'),
+                  icon: Icon(Icons.whatshot),
+                  title: Text('Top Rated'),
                   activeColor: Colors.pink),
-              BottomNavyBarItem(
-                  icon: Icon(Icons.message),
-                  title: Text('Messages'),
-                  activeColor: Colors.pink),
-                  
             ]));
   }
 }
