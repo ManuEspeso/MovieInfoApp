@@ -34,9 +34,9 @@ class HttpRemoteRepository implements RemoteRepository {
         String backdropPath = jsonList[i]['backdrop_path'] ?? "";
         String originalLanguage = jsonList[i]['original_language'];
         String originalTitle = jsonList[i]['original_title'];
-        List<int> genreIds = jsonList[i]['genre_ids'] as List<dynamic>;
+        List<int> genreIds = jsonList[i]['genre_ids'].cast<int>();
         String title = jsonList[i]['title'];
-        double voteAverage = jsonList[i]['vote_average'] as double ?? 0.0;
+        double voteAverage = jsonList[i]['vote_average'].toDouble();
         String overview = jsonList[i]['overview'];
         String releaseDate = jsonList[i]['release_date'];
 
