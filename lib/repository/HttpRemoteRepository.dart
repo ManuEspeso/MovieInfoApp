@@ -16,10 +16,10 @@ class HttpRemoteRepository implements RemoteRepository {
   Future<List<Result>> getUpcomingMovies() async {
     final response = await client
         .get("$_baseUrl/upcoming?api_key=$_apiKey&language=es-SP&page=1");
-    print(response.body.toString());
+    //print(response.body.toString());
     List<Result> myResults = [];
     if (response.statusCode == 200) {
-      print("Inside 200 status code");
+      //print("Inside 200 status code");
       var jsonBody = json.decode(response.body);
       List jsonList = jsonBody['results'];
       //print(jsonList.length);
@@ -56,9 +56,9 @@ class HttpRemoteRepository implements RemoteRepository {
             overview,
             releaseDate);
         myResults.add(_results);
-        print(myResults);
+       //print(myResults);
       }
-      //return myResults;
+      return myResults;
 
     } else {
       print("Status code : ${response.statusCode}");
