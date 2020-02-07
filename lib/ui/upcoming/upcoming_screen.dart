@@ -27,12 +27,19 @@ class _UpcomingScreenState extends State<UpcomingScreen>
     setState(() {
       this._upcomingList = _myList;
     });
-
-    print(_upcomingList.length);
   }
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text('Upcoming Movies')),
+      ),
+      body: listBuilder(),
+    );
+  }
+
+  Widget listBuilder() {
     return ListView.builder(
       itemBuilder: (BuildContext ctxt, int index) {
         return _buildListItem(_upcomingList[index], ctxt);
@@ -44,18 +51,16 @@ class _UpcomingScreenState extends State<UpcomingScreen>
   _buildListItem(Result _result, BuildContext context) {
     return Card(
       child: Container(
-        padding: EdgeInsets.only(top: 10),
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.access_alarms),
-              title: Text(_result.title),
-            )
-          ],
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-        ),
-      ),
+          padding: EdgeInsets.only(top: 10),
+          width: 100,
+          height: 200,
+          child: Row(
+            children: <Widget>[
+              Image.network(
+                  'https://image.tmdb.org/t/p/w185${_result.poster_path}'),
+              Text(_result.title),
+            ],
+          )),
       margin: EdgeInsets.only(top: 10, left: 10, right: 10),
     );
   }
