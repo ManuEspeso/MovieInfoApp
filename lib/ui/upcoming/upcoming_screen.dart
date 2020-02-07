@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/repository/HttpRemoteRepository.dart';
+import 'package:movies_proyect/repository/remote/HttpRemoteRepository.dart';
 
 class UpcomingScreen extends StatefulWidget {
   @override
@@ -7,11 +7,11 @@ class UpcomingScreen extends StatefulWidget {
 }
 
 class _UpcomingScreenState extends State<UpcomingScreen> {
- HttpRemoteRepository _httpRemote = HttpRemoteRepository();
+ //HttpRemoteRepository _httpRemote = HttpRemoteRepository();
 @override
   void initState() {
     super.initState();
-   _httpRemote.getUpcomingMovies();
+   //_httpRemote.getUpcomingMovies();
   }
 
 

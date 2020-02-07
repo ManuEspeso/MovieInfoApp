@@ -40,6 +40,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         bottomNavigationBar: BottomNavyBar(
+          backgroundColor: Colors.black,
             selectedIndex: _selectedIndex,
             showElevation: true, // use this to remove appBar's elevation
             onItemSelected: (index) => setState(() {
