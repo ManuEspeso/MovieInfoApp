@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/model/result.dart';
-import 'package:movies_proyect/repository/HttpRemoteRepository.dart';
+import 'package:http/http.dart';
+import 'package:movies_proyect/model/movies.dart';
+import 'package:movies_proyect/repository/remote/HttpRemoteRepository.dart';
 import 'package:movies_proyect/ui/upcoming/upcoming_presenter.dart';
 
 class UpcomingScreen extends StatefulWidget {
@@ -10,8 +11,8 @@ class UpcomingScreen extends StatefulWidget {
 
 class _UpcomingScreenState extends State<UpcomingScreen>
     implements UpcomingScreenProtocol {
-  HttpRemoteRepository _httpRemote = HttpRemoteRepository();
-  Result _resultss;
+  HttpRemoteRepository _httpRemote = HttpRemoteRepository(Client());
+
   UpcomingPresenter _presenter;
   List _upcomingList = [];
 
@@ -32,9 +33,6 @@ class _UpcomingScreenState extends State<UpcomingScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Upcoming Movies')),
-      ),
       body: listBuilder(),
       backgroundColor: Colors.black,
     );
@@ -49,7 +47,7 @@ class _UpcomingScreenState extends State<UpcomingScreen>
     );
   }
 
-  _buildListItem(Result _result, BuildContext context) {
+  _buildListItem(Movies _result, BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),

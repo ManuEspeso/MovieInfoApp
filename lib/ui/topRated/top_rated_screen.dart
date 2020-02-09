@@ -31,65 +31,6 @@ class _TopRatedScreenState extends State<TopRatedScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Top Rated"),
-        backgroundColor: Colors.black,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search, color: Colors.white),
-            //onPressed: () => goToSearch(context),
-          )
-        ],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            DrawerHeader(
-                padding: const EdgeInsets.all(0.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                    const Color(0xff2b5876),
-                    const Color(0xff4e4376),
-                  ])),
-                )),
-            ListTile(
-              title: Text("Favorites"),
-              trailing: Icon(Icons.favorite),
-              //onTap: () => goToFavorites(context),
-            ),
-            Divider(
-              height: 5.0,
-            ),
-            ListTile(
-              title: Text("Movies"),
-              //selected: mediaType == MediaType.movie,
-              trailing: Icon(Icons.local_movies),
-              /*onTap: () {
-                _changeMediaType(MediaType.movie);
-                Navigator.of(context).pop();
-              },*/
-            ),
-            ListTile(
-              title: Text("TV Shows"),
-              // selected: mediaType == MediaType.show,
-              trailing: Icon(Icons.live_tv),
-              /*onTap: () {
-                _changeMediaType(MediaType.show);
-                Navigator.of(context).pop();
-              },*/
-            ),
-            Divider(
-              height: 5.0,
-            ),
-            ListTile(
-              title: Text("Close"),
-              trailing: Icon(Icons.close),
-              onTap: () => Navigator.of(context).pop(),
-            )
-          ],
-        ),
-      ),
       body: ListView.builder(
           itemCount: listTopRatedMovies.length,
           itemBuilder: (context, index) {

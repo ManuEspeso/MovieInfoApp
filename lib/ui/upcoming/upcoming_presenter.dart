@@ -1,5 +1,4 @@
-import 'package:movies_proyect/model/result.dart';
-import 'package:movies_proyect/repository/RemoteRepository.dart';
+import 'package:movies_proyect/repository/remote/RemoteRepository.dart';
 
 class UpcomingPresenter {
   UpcomingScreenProtocol _view;
@@ -8,7 +7,6 @@ class UpcomingPresenter {
   UpcomingPresenter(this._view, this._remoteRepository);
 
   List _listItem = [];
-  Result _result;
 
   init() async {
     _listItem = await _remoteRepository.getUpcomingMovies();

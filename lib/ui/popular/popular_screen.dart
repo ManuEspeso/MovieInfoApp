@@ -29,10 +29,6 @@ class _PopularScreenState extends State<PopularScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("PopularView"),
-        backgroundColor: Colors.black,
-      ),
       body: buildMoviesListElement(listPopularMovies),
       backgroundColor: Colors.black,
     );
