@@ -7,7 +7,4 @@ abstract class RemoteRepository {
   Future<List<Movies>> getPopularMovies();
 
   Future<List<Movies>> getTopRatedMovies();
-
-  //Future<List<Genres>> getMovieGenres();
-
 }

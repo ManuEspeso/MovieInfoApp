@@ -55,23 +55,3 @@ class Movies {
         releaseDate);
   }
 }
-
-/*class Genres {
-  final int id;
-  final String name;
-
-  Genres(
-    this.id,
-    this.name,
-  );
-
-  factory Genres.fromMap(Map<String, dynamic> map) {
-    int id = map['id'];
-    String name = map['name'];
-
-    return Genres(
-      id,
-      name,
-    );
-  }
-}*/

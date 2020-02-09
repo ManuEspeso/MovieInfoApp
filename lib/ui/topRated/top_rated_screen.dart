@@ -11,7 +11,6 @@ class TopRatedScreen extends StatefulWidget {
 
 class _TopRatedScreenState extends State<TopRatedScreen>
     implements TopRatedProtocol {
-  var listPrueba = [4, 5, 7, 9];
   TopRatedPresenter presenter;
   var listTopRatedMovies = [];
 
@@ -24,7 +23,9 @@ class _TopRatedScreenState extends State<TopRatedScreen>
 
   @override
   showTopRatedMovies(List popularMovies) {
-    this.listTopRatedMovies = popularMovies;
+    setState(() {
+      this.listTopRatedMovies = popularMovies;
+    });
   }
 
   @override
@@ -48,9 +49,9 @@ class _TopRatedScreenState extends State<TopRatedScreen>
                 child: Container(
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [
-                        const Color(0xff2b5876),
-                        const Color(0xff4e4376),
-                      ])),
+                    const Color(0xff2b5876),
+                    const Color(0xff4e4376),
+                  ])),
                 )),
             ListTile(
               title: Text("Favorites"),
@@ -111,7 +112,6 @@ class _TopRatedScreenState extends State<TopRatedScreen>
                   Container(
                     child: Text(
                       movie.title,
-                      //style: TextStyle(fontSize: 14.0),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: Theme.of(context)
@@ -123,7 +123,7 @@ class _TopRatedScreenState extends State<TopRatedScreen>
                   Container(
                     padding: const EdgeInsets.only(top: 6.0),
                     child: Text(
-                      presenter.getGenreString(movie.genre_ids),
+                      presenter.getMovieGenres(movie.genre_ids),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.body1,
@@ -186,22 +186,22 @@ class _TopRatedScreenState extends State<TopRatedScreen>
   }
 
   Widget _buildCard(Movies movie) => SizedBox(
-    height: 285,
-    child: Card(
-      child: Column(
-        children: <Widget>[
-          InkResponse(
-            enableFeedback: true,
-            child: Image.network(
-              'https://image.tmdb.org/t/p/w185${movie.poster_path}',
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: 215,
-            ),
+        height: 285,
+        child: Card(
+          child: Column(
+            children: <Widget>[
+              InkResponse(
+                enableFeedback: true,
+                child: Image.network(
+                  'https://image.tmdb.org/t/p/w185${movie.poster_path}',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 215,
+                ),
+              ),
+              movieElements(movie),
+            ],
           ),
-          movieElements(movie),
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 }
