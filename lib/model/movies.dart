@@ -1,10 +1,8 @@
 class Movies {
   final double popularity;
   final int vote_count;
-  final bool video;
   final String poster_path;
   final int id;
-  final bool adult;
   final String backdrop_path;
   final String original_language;
   final String original_title;
@@ -17,10 +15,8 @@ class Movies {
   Movies(
       this.popularity,
       this.vote_count,
-      this.video,
       this.poster_path,
       this.id,
-      this.adult,
       this.backdrop_path,
       this.original_language,
       this.original_title,
@@ -33,10 +29,8 @@ class Movies {
   factory Movies.fromMap(Map<String, dynamic> map) {
     double popularity = map['popularity'];
     int voteCount = map['vote_count'];
-    bool video = map['video'];
     String posterPath = map['poster_path'] ?? "";
     int id = map['id'].toInt();
-    bool adult = map['adult'];
     String backdropPath = map['backdrop_path'] ?? "";
     String originalLanguage = map['original_language'];
     String originalTitle = map['original_title'];
@@ -49,10 +43,8 @@ class Movies {
     return Movies(
         popularity,
         voteCount,
-        video,
         posterPath,
         id,
-        adult,
         backdropPath,
         originalLanguage,
         originalTitle,
@@ -63,3 +55,23 @@ class Movies {
         releaseDate);
   }
 }
+
+/*class Genres {
+  final int id;
+  final String name;
+
+  Genres(
+    this.id,
+    this.name,
+  );
+
+  factory Genres.fromMap(Map<String, dynamic> map) {
+    int id = map['id'];
+    String name = map['name'];
+
+    return Genres(
+      id,
+      name,
+    );
+  }
+}*/

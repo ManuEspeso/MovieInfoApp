@@ -59,4 +59,45 @@ class HttpRemoteRepository implements RemoteRepository {
       throw Exception('Failed to load popular movies list');
     }
   }
+
+  @override
+  Future<List<Movies>> getTopRatedMovies() async {
+    final response = await _client
+        .get("$_baseUrl/top_rated?api_key=$_apiKey&language=es-SP&page=1");
+    List<Movies> myTopRatedMovies = [];
+
+    if (response.statusCode == 200) {
+      var jsonBody = json.decode(response.body);
+      List jsonPopularMovies = jsonBody['results'];
+
+      for (int i = 0; i < jsonPopularMovies.length; i++) {
+        Movies _movies = Movies.fromMap(jsonPopularMovies[i]);
+        myTopRatedMovies.add(_movies);
+      }
+      return myTopRatedMovies;
+    } else {
+      throw Exception('Failed to load top rated movies list');
+    }
+  }
+
+  /*@override
+  Future<List<Genres>> getMovieGenres() async {
+    final response =
+        await _client.get("https://api.themoviedb.org/3/genre/movie/list?api_key=$_apiKey&language=es-SP");
+
+    List<Genres> movieGenres = [];
+
+    if (response.statusCode == 200) {
+      var jsonBody = json.decode(response.body);
+      List jsonMovieGenres = jsonBody['genres'];
+
+      for (int i = 0; i < jsonMovieGenres.length; i++) {
+        Genres _genres = Genres.fromMap(jsonMovieGenres[i]);
+        movieGenres.add(_genres);
+      }
+      return movieGenres;
+    } else {
+      throw Exception('Failed to load top rated movies list');
+    }
+  }*/
 }
