@@ -134,9 +134,9 @@ class _TopRatedScreenState extends State<TopRatedScreen>
               InkResponse(
                 enableFeedback: true,
                 child: Image.network(
-                  'https://image.tmdb.org/t/p/w185${movie.poster_path}',
+                  'https://image.tmdb.org/t/p/w185${movie.backdrop_path}',
                   fit: BoxFit.cover,
-                  width: double.infinity,
+                  //width: double.infinity,
                   height: 215,
                 ),
               ),
