@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:movies_proyect/model/movies.dart';
 import 'package:movies_proyect/repository/remote/HttpRemoteRepository.dart';
+import 'package:movies_proyect/ui/detail/detail_screen.dart';
 import 'package:movies_proyect/ui/upcoming/upcoming_presenter.dart';
 
 class UpcomingScreen extends StatefulWidget {
@@ -47,66 +48,74 @@ class _UpcomingScreenState extends State<UpcomingScreen>
     );
   }
 
-  _buildListItem(Movies _result, BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      child: Container(
-          width: 150,
-          height: 245,
-          child: Row(
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image.network(
-                    'https://image.tmdb.org/t/p/w185${_result.poster_path}'),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    width: 150,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_result.title,
-                          style: TextStyle(
-                              fontSize: 17.0, fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Icon(Icons.calendar_today),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(_result.release_date),
-                          ),
-                          Icon(Icons.star),
-                          Text(_result.vote_average.toString())
-                        ],
+  _buildListItem(Movies _movies, BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => DetailScreen(_movies)));
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Container(
+            width: 150,
+            height: 245,
+            child: Row(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Image.network(
+                      'https://image.tmdb.org/t/p/w185${_movies.poster_path}'),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(
+                      width: 150,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(_movies.title,
+                            style: TextStyle(
+                                fontSize: 17.0, fontWeight: FontWeight.bold)),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 170,
-                    height: 100,
-                    child: Text(
-                      _result.overview,
-                      style: TextStyle(fontSize: 14.0),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 6,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Icon(Icons.calendar_today),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(_movies.release_date),
+                            ),
+                            Icon(Icons.star),
+                            Text(_movies.vote_average.toString())
+                          ],
+                        ),
+                      ),
                     ),
-                  )
-                ],
-              )
-            ],
-          )),
-      margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+                    SizedBox(
+                      width: 170,
+                      height: 100,
+                      child: Text(
+                        _movies.overview,
+                        style: TextStyle(fontSize: 14.0),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 6,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            )),
+        margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+      ),
     );
   }
 }
