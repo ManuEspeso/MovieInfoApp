@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_proyect/model/movies.dart';
 import 'package:movies_proyect/repository/dependency_injector.dart';
+import 'package:movies_proyect/ui/detail/detail_screen.dart';
 import 'package:movies_proyect/ui/topRated/top_rated_presenter.dart';
 
 class TopRatedScreen extends StatefulWidget {
@@ -128,20 +129,26 @@ class _TopRatedScreenState extends State<TopRatedScreen>
 
   Widget _buildCard(Movies movie) => SizedBox(
         height: 285,
-        child: Card(
-          child: Column(
-            children: <Widget>[
-              InkResponse(
-                enableFeedback: true,
-                child: Image.network(
-                  'https://image.tmdb.org/t/p/w185${movie.backdrop_path}',
-                  fit: BoxFit.cover,
-                  //width: double.infinity,
-                  height: 215,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DetailScreen(movie)));
+          },
+          child: Card(
+            child: Column(
+              children: <Widget>[
+                InkResponse(
+                  enableFeedback: true,
+                  child: Image.network(
+                    'https://image.tmdb.org/t/p/w185${movie.backdrop_path}',
+                    fit: BoxFit.cover,
+                    //width: double.infinity,
+                    height: 215,
+                  ),
                 ),
-              ),
-              movieElements(movie),
-            ],
+                movieElements(movie),
+              ],
+            ),
           ),
         ),
       );
