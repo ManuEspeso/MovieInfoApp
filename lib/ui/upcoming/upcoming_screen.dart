@@ -25,9 +25,12 @@ class _UpcomingScreenState extends State<UpcomingScreen>
 
   @override
   addUpcomingMovies(List _myList) {
-    setState(() {
+    if (mounted) {
+      setState(() {
       this._upcomingList = _myList;
     });
+    }
+    
   }
 
   @override

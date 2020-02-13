@@ -7,8 +7,10 @@ import 'package:movies_proyect/repository/remote/RemoteRepository.dart';
 //api key de Pernas = 77335f53286ea3ce074ab21558a8fd05
 //ejemplo para upcoming
 //https://api.themoviedb.org/3/movie/upcoming?api_key=77335f53286ea3ce074ab21558a8fd05&language=en-US&page=1
+//llamada detail : https://api.themoviedb.org/3/movie/41342?api_key=77335f53286ea3ce074ab21558a8fd05
 final _apiKey = '77335f53286ea3ce074ab21558a8fd05';
 final _baseUrl = "http://api.themoviedb.org/3/movie";
+var _movieId = "5678";
 
 class HttpRemoteRepository implements RemoteRepository {
   final Client _client;
@@ -77,6 +79,17 @@ class HttpRemoteRepository implements RemoteRepository {
       return myTopRatedMovies;
     } else {
       throw Exception('Failed to load top rated movies list');
+    }
+  }
+
+  @override
+  Future<MovieDetail> getMovieDetails(int movieId) async {
+    final response = await _client.get("$_baseUrl/$movieId?api_key=$_apiKey");
+    print(response.body.toString());
+    if (response.statusCode == 200) {
+      return MovieDetail.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to retrieve Movie Detail');
     }
   }
 }
