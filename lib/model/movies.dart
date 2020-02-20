@@ -54,3 +54,4 @@ class Movies {
         overview,
         releaseDate);
   }
+}

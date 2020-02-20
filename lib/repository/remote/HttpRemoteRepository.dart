@@ -120,7 +120,9 @@ class HttpRemoteRepository implements RemoteRepository {
       mySearchedMovies.add(_movies);
     }
     return mySearchedMovies;
+  }
 
+  @override
   Future<List<Movies>> getMovieSimilar(int movieID) async {
     final response = await _client.get(
         "$_baseUrl/$movieID/similar?api_key=$_apiKey&language=es-SP&page=1");

@@ -48,29 +48,12 @@ class _MainScreenState extends State<MainScreen> {
                     ])),
                   )),
               ListTile(
-                title: Text("Favorites"),
-                trailing: Icon(Icons.favorite),
-                //onTap: () => goToFavorites(context),
-              ),
-              Divider(
-                height: 5.0,
-              ),
-              ListTile(
                 title: Text("Search"),
-                //selected: mediaType == MediaType.movie,
                 trailing: Icon(Icons.search),
                 onTap: () {
                   Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SearchScreen()));
-              },
-              ),
-              ListTile(
-                title: Text("TV Shows"),
-                // selected: mediaType == MediaType.show,
-                trailing: Icon(Icons.live_tv),
-                onTap: () {
-               
-              },
+                      MaterialPageRoute(builder: (context) => SearchScreen()));
+                },
               ),
               Divider(
                 height: 5.0,
