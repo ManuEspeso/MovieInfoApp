@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_proyect/repository/dependency_injector.dart';
+import 'package:movies_proyect/ui/detail/detail_screen.dart';
 import 'package:movies_proyect/ui/popular/popular_presenter.dart';
 
 class PopularScreen extends StatefulWidget {
@@ -48,13 +49,18 @@ class _PopularScreenState extends State<PopularScreen>
             decoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
             child: InkResponse(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailScreen(movies[index])));
+              },
               splashColor: Colors.red,
               enableFeedback: true,
               child: Image.network(
                 'https://image.tmdb.org/t/p/w185${movies[index].poster_path}',
                 fit: BoxFit.cover,
               ),
-              //onTap: () => goToMoviesDetailPage(snapshot.data, index),
             ),
           ),
         );

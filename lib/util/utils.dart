@@ -1,3 +1,8 @@
+import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final dollarFormat = NumberFormat("#,##0.00", "es_SP");
+
 Map<int, String> genreMap = {
   37: 'Western',
   10752: 'Bélica',
@@ -22,8 +27,39 @@ Map<int, String> genreMap = {
   28: 'Acción',
 };
 
+List<String> getGenresForIds(List<int> genreIds) =>
+    genreIds.map((id) => genreMap[id]).toList();
+
 String getGenreString(List<int> genreIds) {
   StringBuffer buffer = StringBuffer();
-  buffer.writeAll(genreIds.map((id) => genreMap[id]).toList(), ", ");
+  buffer.writeAll(getGenresForIds(genreIds), ", ");
   return buffer.toString();
+}
+
+String formatRuntime(int runtime) {
+  int hours = runtime ~/ 60;
+  int minutes = runtime % 60;
+
+  return '$hours\h $minutes\m';
+}
+
+String formatNumberToDollars(int amount) => '\$${dollarFormat.format(amount)}';
+
+String getImdbUrl(String imdbId) => 'http://www.imdb.com/title/$imdbId';
+
+String concatListToString(List<dynamic> data, String mapKey) {
+  StringBuffer buffer = StringBuffer();
+  buffer.writeAll(data.map<String>((map) => map[mapKey]).toList(), ", ");
+  return buffer.toString();
+}
+
+String getMediumPictureUrl(String path) =>
+    "https://image.tmdb.org/t/p/w300/" + path;
+
+launchUrl(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
 }
