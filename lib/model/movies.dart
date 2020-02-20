@@ -1,5 +1,5 @@
 class Movies {
-  final double popularity;
+  //final double popularity;
   final int vote_count;
   final String poster_path;
   final int id;
@@ -13,7 +13,7 @@ class Movies {
   final String release_date;
 
   Movies(
-      this.popularity,
+      //this.popularity,
       this.vote_count,
       this.poster_path,
       this.id,
@@ -27,7 +27,7 @@ class Movies {
       this.release_date);
 
   factory Movies.fromMap(Map<String, dynamic> map) {
-    double popularity = map['popularity'];
+    //double popularity = map['popularity'];
     int voteCount = map['vote_count'];
     String posterPath = map['poster_path'] ?? "";
     int id = map['id'].toInt();
@@ -41,7 +41,7 @@ class Movies {
     String releaseDate = map['release_date'];
 
     return Movies(
-        popularity,
+        //popularity,
         voteCount,
         posterPath,
         id,
@@ -54,4 +54,3 @@ class Movies {
         overview,
         releaseDate);
   }
-}

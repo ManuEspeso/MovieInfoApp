@@ -2,6 +2,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_proyect/ui/popular/popular_screen.dart';
+import 'package:movies_proyect/ui/search/search_screen.dart';
 import 'package:movies_proyect/ui/topRated/top_rated_screen.dart';
 import 'package:movies_proyect/ui/upcoming/upcoming_screen.dart';
 
@@ -58,19 +59,18 @@ class _MainScreenState extends State<MainScreen> {
                 title: Text("Search"),
                 //selected: mediaType == MediaType.movie,
                 trailing: Icon(Icons.search),
-                /*onTap: () {
-                _changeMediaType(MediaType.movie);
-                Navigator.of(context).pop();
-              },*/
+                onTap: () {
+                  Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SearchScreen()));
+              },
               ),
               ListTile(
                 title: Text("TV Shows"),
                 // selected: mediaType == MediaType.show,
                 trailing: Icon(Icons.live_tv),
-                /*onTap: () {
-                _changeMediaType(MediaType.show);
-                Navigator.of(context).pop();
-              },*/
+                onTap: () {
+               
+              },
               ),
               Divider(
                 height: 5.0,
