@@ -61,7 +61,6 @@ class _PopularScreenState extends State<PopularScreen>
                 'https://image.tmdb.org/t/p/w185${movies[index].poster_path}',
                 fit: BoxFit.cover,
               ),
-              //onTap: () => goToMoviesDetailPage(snapshot.data, index),
             ),
           ),
         );

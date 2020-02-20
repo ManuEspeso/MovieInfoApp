@@ -1,15 +1,63 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:movies_proyect/model/cast.dart';
+import 'package:movies_proyect/model/movie_detail.dart';
 import 'package:movies_proyect/model/movies.dart';
+import 'package:movies_proyect/repository/dependency_injector.dart';
+import 'package:movies_proyect/ui/detail/about_section.dart';
+import 'package:movies_proyect/ui/detail/cast_section.dart';
+import 'package:movies_proyect/ui/detail/detail_presenter.dart';
+import 'package:movies_proyect/ui/detail/similar_section.dart';
 import 'package:movies_proyect/util/bottom_gradient.dart';
 import 'package:movies_proyect/util/text_bubble.dart';
 import 'package:movies_proyect/util/utils.dart';
 
-class DetailScreen extends StatelessWidget {
-  final Movies _movie;
+class DetailScreen extends StatefulWidget {
+  final Movies movie;
 
-  DetailScreen(this._movie);
+  DetailScreen(this.movie);
+
+  @override
+  _DetailScreenState createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen>
+    implements DetailScreenProtocol {
+  DetailPresenter presenter;
+  MovieDetail _movieDetail;
+  List<Cast> _actorList;
+  List<Movies> _movieSimilar;
+
+  @override
+  void initState() {
+    super.initState();
+    presenter = DetailPresenter(this, Injector.instance.remoteRepository);
+    presenter.init(widget.movie.id);
+    presenter.getCastMovie(widget.movie.id);
+    presenter.getSimilarMovies(widget.movie.id);
+  }
+
+  @override
+  showMovieDetails(MovieDetail movieDetail) {
+    setState(() {
+      _movieDetail = movieDetail;
+    });
+  }
+
+  @override
+  showMovieCast(List<Cast> movieCast) {
+    setState(() {
+      _actorList = movieCast;
+    });
+  }
+
+  @override
+  showMovieSimilar(List<Movies> movieSimilar) {
+    setState(() {
+      _movieSimilar = movieSimilar;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,45 +65,37 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: Color(0xFF2C2B33),
         body: CustomScrollView(
           slivers: <Widget>[
-            _buildAppBar(_movie),
-            _buildContentSection(_movie),
+            _buildAppBar(),
+            _buildContentSection(),
           ],
         ));
   }
 
-  Widget _buildAppBar(Movies movie) {
+  Widget _buildAppBar() {
     return SliverAppBar(
       expandedHeight: 240.0,
       pinned: true,
-      /*actions: <Widget>[
-        ScopedModelDescendant<AppModel>(
-            builder: (context, child, AppModel model) => IconButton(
-                icon: Icon(model.isItemFavorite(widget._mediaItem)
-                    ? Icons.favorite
-                    : Icons.favorite_border),
-                onPressed: () => model.toggleFavorites(widget._mediaItem)))
-      ],*/
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           fit: StackFit.expand,
           children: <Widget>[
             Hero(
-              tag: "Movie-Tag-${_movie.id}",
+              tag: "Movie-Tag-${widget.movie.id}",
               child: Image.network(
-                'https://image.tmdb.org/t/p/w500${_movie.backdrop_path}',
+                'https://image.tmdb.org/t/p/w500${widget.movie.backdrop_path}',
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),
             ),
             BottomGradient(),
-            _buildMetaSection(_movie)
+            _buildMetaSection()
           ],
         ),
       ),
     );
   }
 
-  Widget _buildMetaSection(Movies mediaItem) {
+  Widget _buildMetaSection() {
     return AnimatedOpacity(
       opacity: 1.0,
       duration: Duration(milliseconds: 500),
@@ -68,24 +108,24 @@ class DetailScreen extends StatelessWidget {
             Row(
               children: <Widget>[
                 TextBubble(
-                  mediaItem.backdrop_path.toString(),
+                  widget.movie.release_date.toString(),
                   backgroundColor: Color(0xffF47663),
                 ),
                 Container(
                   width: 8.0,
                 ),
-                TextBubble(_movie.vote_average.toString(),
+                TextBubble(widget.movie.vote_average.toString(),
                     backgroundColor: Color(0xffF47663)),
               ],
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(mediaItem.title,
+              child: Text(widget.movie.title,
                   style: TextStyle(color: Color(0xFFEEEEEE), fontSize: 20.0)),
             ),
             Row(
-              children: getGenresForIds(mediaItem.genre_ids)
-                  .sublist(0, min(5, mediaItem.genre_ids.length))
+              children: getGenresForIds(widget.movie.genre_ids)
+                  .sublist(0, min(5, widget.movie.genre_ids.length))
                   .map((genre) => Row(
                         children: <Widget>[
                           TextBubble(genre),
@@ -102,7 +142,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildContentSection(Movies media) {
+  Widget _buildContentSection() {
     return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
         Container(
@@ -120,7 +160,7 @@ class DetailScreen extends StatelessWidget {
                 Container(
                   height: 8.0,
                 ),
-                Text(media.overview,
+                Text(widget.movie.overview,
                     style:
                         const TextStyle(color: Colors.white, fontSize: 12.0)),
                 Container(
@@ -130,8 +170,8 @@ class DetailScreen extends StatelessWidget {
             ),
           ),
         ),
-        /*Container(
-          decoration: BoxDecoration(color: Color(0xFF2C2B33)  ),
+        Container(
+          decoration: BoxDecoration(color: Color(0xFF2C2B33)),
           child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: _actorList == null
@@ -139,36 +179,22 @@ class DetailScreen extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     )
                   : CastSection(_actorList)),
-        ),*/
-        /*Container(
+        ),
+        Container(
           decoration: BoxDecoration(color: Color(0xFF222128)),
           child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: _mediaDetails == null
+              child: _movieDetail == null
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
-                  : MetaSection(_mediaDetails)),
-        ),*/
-        /*(widget._mediaItem.type == MediaType.show)
-            ? Container(
-                decoration: BoxDecoration(color: primary),
-                child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: _seasonList == null
-                        ? Container()
-                        : SeasonSection(widget._mediaItem, _seasonList)),
-              )
-            : Container(),*/
-        /*Container(
-            decoration: BoxDecoration(
-                color: (widget._mediaItem.type == MediaType.movie
-                    ? primary
-                    : primaryDark)),
-            child: _similarMedia == null
+                  : AboutSection(_movieDetail)),
+        ),
+        Container(
+            decoration: BoxDecoration(color: Color(0xFF2C2B33)),
+            child: _movieSimilar == null
                 ? Container()
-                : SimilarSection(_similarMedia)
-        )*/
+                : SimilarSection(_movieSimilar))
       ]),
     );
   }

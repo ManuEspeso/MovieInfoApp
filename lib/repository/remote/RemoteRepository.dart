@@ -1,7 +1,8 @@
+import 'package:movies_proyect/model/cast.dart';
+import 'package:movies_proyect/model/movie_detail.dart';
 import 'package:movies_proyect/model/movies.dart';
 
 abstract class RemoteRepository {
-  //pantalla de upcoming
   Future<List<Movies>> getUpcomingMovies();
 
   Future<List<Movies>> getPopularMovies();
@@ -9,4 +10,8 @@ abstract class RemoteRepository {
   Future<List<Movies>> getTopRatedMovies();
 
   Future<MovieDetail> getMovieDetails(int movieId);
+
+  Future<List<Cast>> getMovieCast(int movieID);
+
+  Future<List<Movies>> getMovieSimilar(int movieID);
 }

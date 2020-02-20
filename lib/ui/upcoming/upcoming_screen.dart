@@ -28,10 +28,9 @@ class _UpcomingScreenState extends State<UpcomingScreen>
   addUpcomingMovies(List _myList) {
     if (mounted) {
       setState(() {
-      this._upcomingList = _myList;
-    });
+        this._upcomingList = _myList;
+      });
     }
-    
   }
 
   @override
@@ -54,10 +53,8 @@ class _UpcomingScreenState extends State<UpcomingScreen>
   _buildListItem(Movies _movies, BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => DetailScreen(_movies)));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => DetailScreen(_movies)));
       },
       child: Card(
         shape: RoundedRectangleBorder(
