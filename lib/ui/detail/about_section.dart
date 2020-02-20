@@ -60,7 +60,7 @@ class AboutSection extends StatelessWidget {
             Expanded(
               flex: 4,
               child: GestureDetector(
-                onTap: () => isLink ? launchUrl(content) : null,
+                //onTap: () => isLink ? launchUrl(content) : null,
                 child: Text(
                   content,
                   style: TextStyle(
