@@ -157,5 +157,51 @@ void main() {
       expect(moviesDetail.backdropPath, "/zNYbiNjYaeK8EDGFjXUJL7E54Bv.jpg");
       expect(moviesDetail.id, 41342);
     });
+
+    test('Should return Searched movies', () async {
+      when(_client.get(
+              'http://api.themoviedb.org/3/movie/upcoming?api_key=77335f53286ea3ce074ab21558a8fd05&language=es-SP&page=1'))
+          .thenAnswer((_) async {
+        return Response(
+            '''
+      {
+    "page": 1,
+    "total_results": 41,
+    "total_pages": 3,
+    "results": [
+        {
+            "popularity": 34.362,
+            "vote_count": 17431,
+            "video": false,
+            "poster_path": "/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+            "id": 680,
+            "adult": false,
+            "backdrop_path": "/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg",
+            "original_language": "en",
+            "original_title": "Pulp Fiction",
+            "genre_ids": [
+                80,
+                53
+            ],
+            "title": "Pulp Fiction",
+            "vote_average": 8.5,
+            "overview": "A burger-loving hit man, his philosophical partner, a drug-addled gangster's moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.",
+            "release_date": "1994-09-10"
+        }
+    ]
+}
+       ''',
+            200,
+            headers: {
+              HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+            });
+      });
+
+      List<Movies> movies = await repository.getSearchedMovie("pulp");
+
+      expect(movies.length, 1);
+      expect(movies[0].popularity, 34.362);
+      expect(movies[0].vote_count, 17431);
+    });
   });
 }

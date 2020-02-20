@@ -1,8 +1,5 @@
-
-
-
 class Movies {
-  final double popularity;
+  //final double popularity;
   final int vote_count;
   final String poster_path;
   final int id;
@@ -16,7 +13,7 @@ class Movies {
   final String release_date;
 
   Movies(
-      this.popularity,
+      //this.popularity,
       this.vote_count,
       this.poster_path,
       this.id,
@@ -30,7 +27,7 @@ class Movies {
       this.release_date);
 
   factory Movies.fromMap(Map<String, dynamic> map) {
-    double popularity = map['popularity'];
+    //double popularity = map['popularity'];
     int voteCount = map['vote_count'];
     String posterPath = map['poster_path'] ?? "";
     int id = map['id'].toInt();
@@ -44,7 +41,7 @@ class Movies {
     String releaseDate = map['release_date'];
 
     return Movies(
-        popularity,
+        //popularity,
         voteCount,
         posterPath,
         id,
@@ -59,22 +56,20 @@ class Movies {
   }
 }
 
-
-
 class MovieDetail {
-   bool _adult;
+  bool _adult;
   String _backdropPath;
   List<Genres> _genres;
   String _homepage;
   int _id;
 
-  MovieDetail(
-      {bool adult,
-      String backdropPath,
-      List<Genres> genres,
-      String homepage,
-      int id,
-      }) {
+  MovieDetail({
+    bool adult,
+    String backdropPath,
+    List<Genres> genres,
+    String homepage,
+    int id,
+  }) {
     this._adult = adult;
     this._backdropPath = backdropPath;
     this._genres = genres;
@@ -93,7 +88,6 @@ class MovieDetail {
   set homepage(String homepage) => _homepage = homepage;
   int get id => _id;
   set id(int id) => _id = id;
-  
 
   MovieDetail.fromJson(Map<String, dynamic> json) {
     _adult = json['adult'];
@@ -146,5 +140,6 @@ class Genres {
     data['name'] = this._name;
     return data;
   }
-
 }
+
+
