@@ -22,8 +22,26 @@ Map<int, String> genreMap = {
   28: 'Acción',
 };
 
+List<String> getGenresForIds(List<int> genreIds) =>
+    genreIds.map((id) => genreMap[id]).toList();
+
 String getGenreString(List<int> genreIds) {
   StringBuffer buffer = StringBuffer();
-  buffer.writeAll(genreIds.map((id) => genreMap[id]).toList(), ", ");
+  buffer.writeAll(getGenresForIds(genreIds), ", ");
+  return buffer.toString();
+}
+
+String formatRuntime(int runtime) {
+  int hours = runtime ~/ 60;
+  int minutes = runtime % 60;
+
+  return '$hours\h $minutes\m';
+}
+
+String getImdbUrl(String imdbId) => 'http://www.imdb.com/title/$imdbId';
+
+String concatListToString(List<dynamic> data, String mapKey) {
+  StringBuffer buffer = StringBuffer();
+  buffer.writeAll(data.map<String>((map) => map[mapKey]).toList(), ", ");
   return buffer.toString();
 }
