@@ -11,6 +11,8 @@ abstract class RemoteRepository {
 
   Future<MovieDetail> getMovieDetails(int movieId);
 
+  Future<List<Movies>> getSearchedMovie(String movie);
+
   Future<List<Cast>> getMovieCast(int movieID);
 
   Future<List<Movies>> getMovieSimilar(int movieID);

@@ -107,6 +107,20 @@ class HttpRemoteRepository implements RemoteRepository {
   }
 
   @override
+  Future<List<Movies>> getSearchedMovie(String movie) async {
+    final response = await _client.get(
+        "https://api.themoviedb.org/3/search/movie?api_key=$_apiKey&query=$movie");
+
+    List<Movies> mySearchedMovies = [];
+
+    var jsonBody = json.decode(response.body);
+    List jsonSearchedMovies = jsonBody['results'];
+    for (int i = 0; i < jsonSearchedMovies.length; i++) {
+      Movies _movies = Movies.fromMap(jsonSearchedMovies[i]);
+      mySearchedMovies.add(_movies);
+    }
+    return mySearchedMovies;
+
   Future<List<Movies>> getMovieSimilar(int movieID) async {
     final response = await _client.get(
         "$_baseUrl/$movieID/similar?api_key=$_apiKey&language=es-SP&page=1");
