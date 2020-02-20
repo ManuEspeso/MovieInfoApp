@@ -33,12 +33,6 @@ class _MainScreenState extends State<MainScreen> {
         appBar: AppBar(
           title: Text("MovieDB"),
           backgroundColor: Colors.black,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search, color: Colors.white),
-              //onPressed: () => goToSearch(context),
-            )
-          ],
         ),
         drawer: Drawer(
           child: ListView(
@@ -61,9 +55,9 @@ class _MainScreenState extends State<MainScreen> {
                 height: 5.0,
               ),
               ListTile(
-                title: Text("Movies"),
+                title: Text("Search"),
                 //selected: mediaType == MediaType.movie,
-                trailing: Icon(Icons.local_movies),
+                trailing: Icon(Icons.search),
                 /*onTap: () {
                 _changeMediaType(MediaType.movie);
                 Navigator.of(context).pop();
