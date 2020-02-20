@@ -7,7 +7,7 @@ class TextBubble extends StatelessWidget {
 
   TextBubble(this.text,
       {this.backgroundColor = const Color(0xFF424242),
-        this.textColor = Colors.white});
+      this.textColor = Colors.white});
 
   @override
   Widget build(BuildContext context) {

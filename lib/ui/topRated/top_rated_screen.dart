@@ -142,7 +142,6 @@ class _TopRatedScreenState extends State<TopRatedScreen>
                   child: Image.network(
                     'https://image.tmdb.org/t/p/w500${movie.backdrop_path}',
                     fit: BoxFit.cover,
-                    //width: double.infinity,
                     height: 215,
                   ),
                 ),

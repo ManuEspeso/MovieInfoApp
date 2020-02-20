@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_proyect/model/cast.dart';
+import 'package:movies_proyect/util/bottom_gradient.dart';
 
 class CastCard extends StatelessWidget {
   final double height;
@@ -11,7 +12,7 @@ class CastCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      //onTap: () => goToActorDetails(context, actor),
+      //onTap: () => ,
       child: Container(
         height: height,
         width: width,
@@ -22,13 +23,13 @@ class CastCard extends StatelessWidget {
               tag: 'Cast-Hero-${cast.id}',
               child: FadeInImage.assetNetwork(
                 placeholder: 'assets/placeholder.jpg',
-                //image: cast.profilePictureUrl,
+                image: cast.profilePictureUrl,
                 fit: BoxFit.cover,
                 height: height,
                 width: width,
               ),
             ),
-            //BottomGradient.noOffset(),
+            BottomGradient.noOffset(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
