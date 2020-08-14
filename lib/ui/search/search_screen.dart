@@ -1,9 +1,9 @@
 import 'package:floating_search_bar/floating_search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/model/movies.dart';
-import 'package:movies_proyect/repository/dependency_injector.dart';
-import 'package:movies_proyect/ui/Detail/detail_screen.dart';
-import 'package:movies_proyect/ui/search/search_presenter.dart';
+import 'package:MovieDb/model/movies.dart';
+import 'package:MovieDb/repository/dependency_injector.dart';
+import 'package:MovieDb/ui/Detail/detail_screen.dart';
+import 'package:MovieDb/ui/search/search_presenter.dart';
 
 class SearchScreen extends StatefulWidget {
   SearchScreen({Key key}) : super(key: key);

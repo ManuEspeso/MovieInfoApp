@@ -1,6 +1,6 @@
-import 'package:movies_proyect/model/cast.dart';
-import 'package:movies_proyect/model/movie_detail.dart';
-import 'package:movies_proyect/model/movies.dart';
+import 'package:MovieDb/model/cast.dart';
+import 'package:MovieDb/model/movie_detail.dart';
+import 'package:MovieDb/model/movies.dart';
 
 abstract class RemoteRepository {
   Future<List<Movies>> getUpcomingMovies();

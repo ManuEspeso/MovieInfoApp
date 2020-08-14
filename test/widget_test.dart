@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:movies_proyect/ui/main/main.dart';
+import 'package:MovieDb/ui/main/main.dart';
 
 void main() {
 /*  testWidgets('Counter increments smoke test', (WidgetTester tester) async {

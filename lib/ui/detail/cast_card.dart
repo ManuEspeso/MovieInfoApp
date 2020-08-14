@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/model/cast.dart';
-import 'package:movies_proyect/util/bottom_gradient.dart';
+import 'package:MovieDb/model/cast.dart';
+import 'package:MovieDb/util/bottom_gradient.dart';
 
 class CastCard extends StatelessWidget {
   final double height;

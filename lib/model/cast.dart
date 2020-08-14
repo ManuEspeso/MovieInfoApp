@@ -1,4 +1,4 @@
-import 'package:movies_proyect/util/utils.dart';
+import 'package:MovieDb/util/utils.dart';
 
 class Cast {
   String character;

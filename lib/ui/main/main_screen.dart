@@ -1,10 +1,10 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/ui/popular/popular_screen.dart';
-import 'package:movies_proyect/ui/search/search_screen.dart';
-import 'package:movies_proyect/ui/topRated/top_rated_screen.dart';
-import 'package:movies_proyect/ui/upcoming/upcoming_screen.dart';
+import 'package:MovieDb/ui/popular/popular_screen.dart';
+import 'package:MovieDb/ui/search/search_screen.dart';
+import 'package:MovieDb/ui/topRated/top_rated_screen.dart';
+import 'package:MovieDb/ui/upcoming/upcoming_screen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -36,34 +36,83 @@ class _MainScreenState extends State<MainScreen> {
           backgroundColor: Colors.black,
         ),
         drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              DrawerHeader(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                      const Color(0xff2b5876),
-                      const Color(0xff4e4376),
-                    ])),
-                  )),
-              ListTile(
-                title: Text("Search"),
-                trailing: Icon(Icons.search),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SearchScreen()));
-                },
+          child: Container(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              color: Colors.black,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 100,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "MovieDB",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.w800),
+                    ),
+                    leading: CircleAvatar(
+                      radius: 28,
+                      backgroundColor: Color(0xffFDCF09),
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundImage: AssetImage('assets/app_logo.png'),
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    height: 35.0,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "Search",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchScreen()));
+                    },
+                  ),
+                  Divider(
+                    height: 5.0,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "Close",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: Icon(
+                      Icons.cancel,
+                      color: Colors.white,
+                    ),
+                    onTap: () => Navigator.of(context).pop(),
+                  ),
+                  Divider(
+                    height: 5.0,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "About",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: Icon(
+                      Icons.question_answer,
+                      color: Colors.white,
+                    ),
+                    onTap: () => Navigator.of(context).pop(),
+                  )
+                ],
               ),
-              Divider(
-                height: 5.0,
-              ),
-              ListTile(
-                title: Text("Close"),
-                trailing: Icon(Icons.close),
-                onTap: () => Navigator.of(context).pop(),
-              )
-            ],
+            ),
           ),
         ),
         body: SizedBox.expand(

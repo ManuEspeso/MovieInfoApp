@@ -1,17 +1,17 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/model/cast.dart';
-import 'package:movies_proyect/model/movie_detail.dart';
-import 'package:movies_proyect/model/movies.dart';
-import 'package:movies_proyect/repository/dependency_injector.dart';
-import 'package:movies_proyect/ui/detail/about_section.dart';
-import 'package:movies_proyect/ui/detail/cast_section.dart';
-import 'package:movies_proyect/ui/detail/detail_presenter.dart';
-import 'package:movies_proyect/ui/detail/similar_section.dart';
-import 'package:movies_proyect/util/bottom_gradient.dart';
-import 'package:movies_proyect/util/text_bubble.dart';
-import 'package:movies_proyect/util/utils.dart';
+import 'package:MovieDb/model/cast.dart';
+import 'package:MovieDb/model/movie_detail.dart';
+import 'package:MovieDb/model/movies.dart';
+import 'package:MovieDb/repository/dependency_injector.dart';
+import 'package:MovieDb/ui/detail/about_section.dart';
+import 'package:MovieDb/ui/detail/cast_section.dart';
+import 'package:MovieDb/ui/detail/detail_presenter.dart';
+import 'package:MovieDb/ui/detail/similar_section.dart';
+import 'package:MovieDb/util/bottom_gradient.dart';
+import 'package:MovieDb/util/text_bubble.dart';
+import 'package:MovieDb/util/utils.dart';
 
 class DetailScreen extends StatefulWidget {
   final Movies movie;

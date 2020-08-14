@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/ui/main/main_screen.dart';
+import 'package:MovieDb/ui/main/main_screen.dart';
 
 void main() => runApp(MyApp());
 

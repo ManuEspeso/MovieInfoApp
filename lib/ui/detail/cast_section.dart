@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/ui/detail/cast_card.dart';
+import 'package:MovieDb/ui/detail/cast_card.dart';
 
 import '../../model/cast.dart';
 

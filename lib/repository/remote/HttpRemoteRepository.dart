@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:movies_proyect/model/cast.dart';
-import 'package:movies_proyect/model/movie_detail.dart';
-import 'package:movies_proyect/model/movies.dart';
-import 'package:movies_proyect/repository/remote/RemoteRepository.dart';
+import 'package:MovieDb/model/cast.dart';
+import 'package:MovieDb/model/movie_detail.dart';
+import 'package:MovieDb/model/movies.dart';
+import 'package:MovieDb/repository/remote/RemoteRepository.dart';
 
 final _apiKey = '77335f53286ea3ce074ab21558a8fd05';
 final _baseUrl = "http://api.themoviedb.org/3/movie";

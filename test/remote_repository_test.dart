@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movies_proyect/model/movie_detail.dart';
-import 'package:movies_proyect/model/movies.dart';
-import 'package:movies_proyect/repository/remote/HttpRemoteRepository.dart';
-import 'package:movies_proyect/repository/remote/RemoteRepository.dart';
+import 'package:MovieDb/model/movie_detail.dart';
+import 'package:MovieDb/model/movies.dart';
+import 'package:MovieDb/repository/remote/HttpRemoteRepository.dart';
+import 'package:MovieDb/repository/remote/RemoteRepository.dart';
 
 class clientMock extends Mock implements Client {}
 

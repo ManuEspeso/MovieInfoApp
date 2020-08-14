@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:movies_proyect/model/movies.dart';
-import 'package:movies_proyect/repository/remote/HttpRemoteRepository.dart';
-import 'package:movies_proyect/ui/detail/detail_screen.dart';
-import 'package:movies_proyect/ui/upcoming/upcoming_presenter.dart';
+import 'package:MovieDb/model/movies.dart';
+import 'package:MovieDb/repository/remote/HttpRemoteRepository.dart';
+import 'package:MovieDb/ui/detail/detail_screen.dart';
+import 'package:MovieDb/ui/upcoming/upcoming_presenter.dart';
 
 class UpcomingScreen extends StatefulWidget {
   @override

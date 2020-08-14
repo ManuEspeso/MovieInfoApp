@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/model/movie_detail.dart';
-import 'package:movies_proyect/model/movies.dart';
-import 'package:movies_proyect/util/utils.dart';
+import 'package:MovieDb/model/movie_detail.dart';
+import 'package:MovieDb/model/movies.dart';
+import 'package:MovieDb/util/utils.dart';
 
 class AboutSection extends StatelessWidget {
   final MovieDetail data;

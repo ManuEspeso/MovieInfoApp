@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/model/movies.dart';
-import 'package:movies_proyect/ui/detail/detail_screen.dart';
+import 'package:MovieDb/model/movies.dart';
+import 'package:MovieDb/ui/detail/detail_screen.dart';
 
 class SimilarSection extends StatelessWidget {
   final List<Movies> _similarMovies;

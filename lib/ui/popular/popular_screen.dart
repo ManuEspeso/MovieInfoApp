@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/repository/dependency_injector.dart';
-import 'package:movies_proyect/ui/detail/detail_screen.dart';
-import 'package:movies_proyect/ui/popular/popular_presenter.dart';
+import 'package:MovieDb/repository/dependency_injector.dart';
+import 'package:MovieDb/ui/detail/detail_screen.dart';
+import 'package:MovieDb/ui/popular/popular_presenter.dart';
 
 class PopularScreen extends StatefulWidget {
   @override

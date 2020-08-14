@@ -1,4 +1,4 @@
-import 'package:movies_proyect/repository/remote/RemoteRepository.dart';
+import 'package:MovieDb/repository/remote/RemoteRepository.dart';
 
 class PopularPresenter {
   PopularProtocol _view;

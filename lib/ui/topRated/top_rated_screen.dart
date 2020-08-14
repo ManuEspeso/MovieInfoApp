@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_proyect/model/movies.dart';
-import 'package:movies_proyect/repository/dependency_injector.dart';
-import 'package:movies_proyect/ui/detail/detail_screen.dart';
-import 'package:movies_proyect/ui/topRated/top_rated_presenter.dart';
+import 'package:MovieDb/model/movies.dart';
+import 'package:MovieDb/repository/dependency_injector.dart';
+import 'package:MovieDb/ui/detail/detail_screen.dart';
+import 'package:MovieDb/ui/topRated/top_rated_presenter.dart';
 
 class TopRatedScreen extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
-import 'package:movies_proyect/repository/remote/RemoteRepository.dart';
-import 'package:movies_proyect/util/utils.dart';
+import 'package:MovieDb/repository/remote/RemoteRepository.dart';
+import 'package:MovieDb/util/utils.dart';
 
 class TopRatedPresenter {
   TopRatedProtocol _view;
